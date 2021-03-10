@@ -5,7 +5,7 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request) {
-	_, _ = w.Write([]byte("hello zeus"))
+	_, _ = w.Write([]byte("Hello zeus"))
 }
 
 func main() {
