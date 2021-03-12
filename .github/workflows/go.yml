@@ -18,16 +18,18 @@ jobs:
       with:
         go-version: 1.15
 
+    - name: Test
+      run: go test -v ./...
+
     - name: Build
       run: go build -v ./...
 
-    - name: Test
-      run: go test -v ./...
     - name: Archive production artifacts
       uses: actions/upload-artifact@v2
       with:
         name: demo
         path: /home/runner/work/demo/demo
+
   dockerfile:
     name: Build Image
     runs-on: ubuntu-latest
@@ -39,3 +41,10 @@ jobs:
         with:
           name: demo
           path: /home/runner/work/demo/demo
+
+      - name: Publish to Registry
+          uses: elgohr/Publish-Docker-Github-Action@master
+          with:
+            name: gozeus/demo
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
