@@ -28,5 +28,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gozeus/demo:v1.0.0
+          tags: gozeus/demo:v1.0.1
 
